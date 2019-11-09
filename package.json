@@ -4,15 +4,14 @@
   "description": "express server with authentication",
   "main": "app.js",
   "scripts": {
-    "server-dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Daniel Schmidt",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sonyzach/usfm-validator.git"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -28,6 +27,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "concurrently": "^5.0.0",
     "nodemon": "^1.19.1"
   }
 }

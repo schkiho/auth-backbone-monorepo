@@ -16,6 +16,16 @@ app.use(bodyParser.json());
 // Routes
 app.use('/users', require('./routes/users'));
 
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(pathresolve(__dirname, 'client', 'build', index.html));
+  });
+}
+
 // Start the server
 const port = process.env.PORT || 5000;
 app.listen(port);
