@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://admin:admin@auth-server-uhgcu.mongodb.net/auth-api?retryWrites=true&w=majority",
+  "JWT_SECRET": "smiauthentication"
+}
